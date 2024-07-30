@@ -1,0 +1,114 @@
+Sure! Here is a simple event planner project that includes HTML, CSS, and JavaScript all in one file:
+
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Planner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        main {
+            padding: 20px;
+        }
+        .event {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .event h2 {
+            margin-top: 0;
+        }
+        .event p {
+            margin: 5px 0;
+        }
+        .add-event-form {
+            margin: 20px 0;
+        }
+        .add-event-form input,
+        .add-event-form textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .add-event-form button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Event Planner</h1>
+    </header>
+    <main>
+        <div id="events">
+            <!-- Events will be added here dynamically -->
+        </div>
+        <div class="add-event-form">
+            <h2>Add New Event</h2>
+            <input type="text" id="event-title" placeholder="Event Title" required>
+            <input type="date" id="event-date" required>
+            <textarea id="event-description" placeholder="Event Description" rows="4" required></textarea>
+            <button onclick="addEvent()">Add Event</button>
+        </div>
+    </main>
+    <script>
+        function addEvent() {
+            const title = document.getElementById('event-title').value;
+            const date = document.getElementById('event-date').value;
+            const description = document.getElementById('event-description').value;
+
+            if (title && date && description) {
+                const eventContainer = document.getElementById('events');
+                const eventElement = document.createElement('div');
+                eventElement.className = 'event';
+
+                eventElement.innerHTML = `
+                    <h2>${title}</h2>
+                    <p><strong>Date:</strong> ${date}</p>
+                    <p>${description}</p>
+                `;
+
+                eventContainer.appendChild(eventElement);
+
+                // Clear the form
+                document.getElementById('event-title').value = '';
+                document.getElementById('event-date').value = '';
+                document.getElementById('event-description').value = '';
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+This code provides a basic structure for an event planner. It includes:
+- An addEvent function that adds new events to the page.
+- A form to input event details (title, date, and description).
+- A section to display added events.
+
+Copy and paste this code into an .html file and open it in your web browser to see the event planner in action.
